@@ -164,17 +164,19 @@ export function getData (data: Function, vm: Component): any {
   }
 }
 
-const computedWatcherOptions = { lazy: true }
-
+const computedWatcherOptions = { lazy: true } // computedWatchers 的选项 lazy 默认为 true
+// 初始化 computed 计算属性
 function initComputed (vm: Component, computed: Object) {
-  // $flow-disable-line
+  // __computedWatchers 存放着所有的 计算属性 对应的 watcher
   const watchers = vm._computedWatchers = Object.create(null)
   // computed properties are just getters during SSR
   const isSSR = isServerRendering()
 
+  // 遍历 computed 计算属性对象里的 属性 key
   for (const key in computed) {
-    const userDef = computed[key]
-    const getter = typeof userDef === 'function' ? userDef : userDef.get
+    const userDef = computed[key] // userDef 为 用户定义的计算属性 例如 'fullName'
+    // 如果用户定义的是一个函数, 则直接返回, 如果定义的是对象, 给他添加一个 getter方法
+    const getter = typeof userDef === 'function' ? userDef : userDef.get // => 获取 getter 函数
     if (process.env.NODE_ENV !== 'production' && getter == null) {
       warn(
         `Getter is missing for computed property "${key}".`,
@@ -192,11 +194,8 @@ function initComputed (vm: Component, computed: Object) {
       )
     }
 
-    // component-defined computed properties are already defined on the
-    // component prototype. We only need to define computed properties defined
-    // at instantiation here.
-    if (!(key in vm)) {
-      defineComputed(vm, key, userDef)
+    if (!(key in vm)) {// 如果这个 计算属性, 没在 vm 实例上, 那么把它代理到 vm 实例上
+      defineComputed(vm, key, userDef) // 定义计算属性
     } else if (process.env.NODE_ENV !== 'production') {
       if (key in vm.$data) {
         warn(`The computed property "${key}" is already defined in data.`, vm)
@@ -207,18 +206,21 @@ function initComputed (vm: Component, computed: Object) {
   }
 }
 
+// 定义这个计算属性 ==> 将这个计算属性代理到 vm 上
 export function defineComputed (
-  target: any,
-  key: string,
-  userDef: Object | Function
+  target: any, // vm
+  key: string, // 属性
+  userDef: Object | Function // 用户定义的计算属性, 这里指的是 fullName
 ) {
   const shouldCache = !isServerRendering()
-  if (typeof userDef === 'function') {
+  // => 如果用户写的 是 函数
+  if (typeof userDef === 'function') { // 如果用户的 计算属性是个 函数 即: fullName(){return ...} 这种格式,走下面逻辑
     sharedPropertyDefinition.get = shouldCache
       ? createComputedGetter(key)
-      : createGetterInvoker(userDef)
+      : createGetterInvoker(userDef)  // 创建一个 getter 调用函数, 传入 userDef
     sharedPropertyDefinition.set = noop
   } else {
+    // => 方法
     sharedPropertyDefinition.get = userDef.get
       ? shouldCache && userDef.cache !== false
         ? createComputedGetter(key)
@@ -235,6 +237,7 @@ export function defineComputed (
       )
     }
   }
+  // 给vm实例上,代理上响应式的 计算属性的key
   Object.defineProperty(target, key, sharedPropertyDefinition)
 }
 
@@ -252,8 +255,8 @@ function createComputedGetter (key) {
     }
   }
 }
-
-function createGetterInvoker(fn) {
+// sharedPropertyDefinition.get = computedGetter(){} 这个 fn 就是 fullName(){} 计算属性函数
+function createGetterInvoker(fn) {// getter 的调用函数, 直接返回一个 computedGetter 计算属性getter方法
   return function computedGetter () {
     return fn.call(this, this)
   }

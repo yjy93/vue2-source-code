@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue源码测试</title>
+  <script type="text/javascript" src="../dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>计算属性测试</h1>
+  <p>{{firstName}}</p>
+  <p>{{lastName}}</p>
+  <p>{{fullName}}</p>
+</div>
+<script type="text/javascript">
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      firstName: '杨',
+      lastName: '阳'
+    },
+    computed: {
+      fullName() {
+        return this.firstName + this.lastName
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
