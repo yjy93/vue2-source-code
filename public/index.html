@@ -11,6 +11,7 @@
   <p>{{firstName}}</p>
   <p>{{lastName}}</p>
   <p>{{fullName}}</p>
+  <p>{{fullName}}</p>
 </div>
 <script type="text/javascript">
   const vm = new Vue({
@@ -22,7 +23,7 @@
     computed: {
       fullName() {
         return this.firstName + this.lastName
-      }
+      },
     }
   })
 </script>

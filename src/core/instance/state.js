@@ -164,7 +164,8 @@ export function getData (data: Function, vm: Component): any {
   }
 }
 
-const computedWatcherOptions = { lazy: true } // computedWatchers 的选项 lazy 默认为 true
+// computedWatchers 的选项 lazy 默认为 true
+const computedWatcherOptions = { lazy: true }
 // 初始化 computed 计算属性
 function initComputed (vm: Component, computed: Object) {
   // __computedWatchers 存放着所有的 计算属性 对应的 watcher
@@ -184,7 +185,7 @@ function initComputed (vm: Component, computed: Object) {
       )
     }
 
-    if (!isSSR) {
+    if (!isSSR) { // 非服务端渲染的时候, 给这个计算属性创建一个 watcher 监听器
       // create internal watcher for the computed property.
       watchers[key] = new Watcher(
         vm,
@@ -212,15 +213,15 @@ export function defineComputed (
   key: string, // 属性
   userDef: Object | Function // 用户定义的计算属性, 这里指的是 fullName
 ) {
-  const shouldCache = !isServerRendering()
+  const shouldCache = !isServerRendering() // 非服务端渲染, 是否缓存??
   // => 如果用户写的 是 函数
   if (typeof userDef === 'function') { // 如果用户的 计算属性是个 函数 即: fullName(){return ...} 这种格式,走下面逻辑
     sharedPropertyDefinition.get = shouldCache
-      ? createComputedGetter(key)
+      ? createComputedGetter(key) // => 创建一个计算属性getter
       : createGetterInvoker(userDef)  // 创建一个 getter 调用函数, 传入 userDef
     sharedPropertyDefinition.set = noop
   } else {
-    // => 方法
+    // => 如果用户写的计算属性是对象,走这里的逻辑
     sharedPropertyDefinition.get = userDef.get
       ? shouldCache && userDef.cache !== false
         ? createComputedGetter(key)
@@ -241,6 +242,7 @@ export function defineComputed (
   Object.defineProperty(target, key, sharedPropertyDefinition)
 }
 
+// 创建一个 计算属性的 getter 方法, 直接返回一个函数
 function createComputedGetter (key) {
   return function computedGetter () {
     const watcher = this._computedWatchers && this._computedWatchers[key]
