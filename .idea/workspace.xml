@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="060b7afe-df11-4284-a00a-a1145d88a8f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/instance/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/instance/state.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +11,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -152,7 +160,8 @@
       <workItem from="1605141209024" duration="63000" />
       <workItem from="1605230315130" duration="1756000" />
       <workItem from="1605355363991" duration="121000" />
-      <workItem from="1605355530638" duration="8726000" />
+      <workItem from="1605355530638" duration="9420000" />
+      <workItem from="1605526560700" duration="295000" />
     </task>
     <task id="LOCAL-00001" summary="v-if 和 v-for 谁的优先级高?">
       <created>1605232890143</created>
@@ -168,11 +177,18 @@
       <option name="project" value="LOCAL" />
       <updated>1605360753817</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="vue计算属性缓存实现原理">
+      <created>1605366321539</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605366321539</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8847000" />
+    <option name="totallyTimeSpent" value="9836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -189,7 +205,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32294616" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32294616" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -203,7 +219,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="v-if 和 v-for 谁的优先级高?" />
     <MESSAGE value="vue 计算属性源码查看" />
-    <option name="LAST_COMMIT_MESSAGE" value="vue 计算属性源码查看" />
+    <MESSAGE value="vue计算属性缓存实现原理" />
+    <option name="LAST_COMMIT_MESSAGE" value="vue计算属性缓存实现原理" />
   </component>
   <component name="WindowStateProjectService">
     <state x="503" y="231" key="#ESLint" timestamp="1605230344988">
@@ -262,13 +279,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="63" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/vue.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -300,6 +310,13 @@
             <element signature="e#4246#4459#0" />
             <element signature="e#4946#5045#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
