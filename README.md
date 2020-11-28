@@ -1,3 +1,5 @@
+> ==vue2源码分析的一个项目== 
+>
 > Vue 源码, 安装依赖的时候报错: `Failed at the phantomjs-prebuilt@2.1.16 install script` 解决办法
 >
 > ```js
